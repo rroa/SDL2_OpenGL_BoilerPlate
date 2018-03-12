@@ -4,7 +4,6 @@
 engine::matrix_4::matrix_4()
 {
 	set_identity();
-	mAngle = Vector3();
 }
 
 engine::matrix_4::matrix_4(float value1, float value2, float value3, float value4, float value5, float value6, float value7, float value8, float value9, float value10, float value11, float value12, float value13, float value14, float value15, float value16)
@@ -60,7 +59,11 @@ void engine::matrix_4::set_identity()
 
 Vector3 engine::matrix_4::get_angle()
 {
-	return mAngle;
+	Vector3 euclideanAngle;
+
+	if (mMatrix[0][0] == 1.0f || mMatrix[0][0] == -1.0f)
+	{
+	}
 }
 
 float *engine::matrix_4::get_matrix()
@@ -81,6 +84,28 @@ engine::matrix_4 engine::matrix_4::get_transpose()
 	}
 
 	return transposedMatrix;
+}
+
+float& engine::matrix_4::operator[](const int pIndex)
+{
+	int rowIndex = pIndex % 4;
+	int columnIndex = pIndex / 4;
+	return mMatrix[rowIndex][columnIndex];
+}
+
+engine::matrix_4 & engine::matrix_4::operator=(const matrix_4 &pToEqual)
+{
+	matrix_4 newMatrix;
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			newMatrix.mMatrix[j][i] = pToEqual.mMatrix[j][i];
+		}
+	}
+
+	return newMatrix;
 }
 
 engine::matrix_4 engine::matrix_4::operator+(const matrix_4 &pToAdd) const

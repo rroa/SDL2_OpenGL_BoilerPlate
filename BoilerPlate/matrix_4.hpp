@@ -16,6 +16,8 @@ namespace engine {
 		void set_identity();
 		Vector3 get_angle();
 
+		float& operator [] (const int pIndex);
+		matrix_4& operator = (const matrix_4&);
 		matrix_4 operator + (const matrix_4&) const;
 		matrix_4 operator - (const matrix_4&) const;
 		matrix_4 operator * (const matrix_4&) const;
@@ -23,6 +25,5 @@ namespace engine {
 
 	private:
 		float mMatrix[4][4];
-		Vector3 mAngle;
 	};
 }
