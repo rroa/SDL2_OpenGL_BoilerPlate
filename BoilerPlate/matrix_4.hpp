@@ -40,7 +40,7 @@ namespace Engine {
 		matrix_4 operator + (const matrix_4&) const;
 		matrix_4 operator - (const matrix_4&) const;
 		matrix_4 operator * (const matrix_4&) const;
-		matrix_4 operator / (const matrix_4&) const;
+		matrix_4 operator / (matrix_4&) const;
 
 	private:
 

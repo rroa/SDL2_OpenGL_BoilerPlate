@@ -367,4 +367,15 @@ namespace Engine
 
 		return newMatrix;
 	}
+
+	Engine::matrix_4 Engine::matrix_4::operator/(matrix_4 &pToDivide) const
+	{
+		matrix_4 newMatrix, toDivideInverted;
+
+		toDivideInverted = pToDivide.get_invert();
+
+		newMatrix = *this * toDivideInverted;
+
+		return newMatrix;
+	}
 }
