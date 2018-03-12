@@ -29,8 +29,17 @@ engine::matrix_4::matrix_4(float value1, float value2, float value3, float value
 	mMatrix.mArray[3][3] = value16;
 }
 
-engine::matrix_4::matrix_4(float values[])
+engine::matrix_4::matrix_4(float pValues[16])
 {
+	int arrayIndex = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			mMatrix.mArray[j][i] = pValues[arrayIndex];
+			arrayIndex++;
+		}
+	}
 
 }
 
@@ -80,6 +89,142 @@ Vector3 engine::matrix_4::get_angle()
 engine::matrix_4::array_2D engine::matrix_4::get_matrix()
 {
 	return mMatrix;
+}
+
+engine::matrix_4 engine::matrix_4::get_invert()
+{
+	float determinant;
+	matrix_4 inverse, matrixCopy;
+	matrixCopy.mMatrix = mMatrix;
+
+	inverse[0] = matrixCopy[5] * matrixCopy[10] * matrixCopy[15] -
+		matrixCopy[5] * matrixCopy[11] * matrixCopy[14] -
+		matrixCopy[9] * matrixCopy[6] * matrixCopy[15] +
+		matrixCopy[9] * matrixCopy[7] * matrixCopy[14] +
+		matrixCopy[13] * matrixCopy[6] * matrixCopy[11] -
+		matrixCopy[13] * matrixCopy[7] * matrixCopy[10];
+
+	inverse[4] = -matrixCopy[4] * matrixCopy[10] * matrixCopy[15] +
+		matrixCopy[4] * matrixCopy[11] * matrixCopy[14] +
+		matrixCopy[8] * matrixCopy[6] * matrixCopy[15] -
+		matrixCopy[8] * matrixCopy[7] * matrixCopy[14] -
+		matrixCopy[12] * matrixCopy[6] * matrixCopy[11] +
+		matrixCopy[12] * matrixCopy[7] * matrixCopy[10];
+
+	inverse[8] = matrixCopy[4] * matrixCopy[9] * matrixCopy[15] -
+		matrixCopy[4] * matrixCopy[11] * matrixCopy[13] -
+		matrixCopy[8] * matrixCopy[5] * matrixCopy[15] +
+		matrixCopy[8] * matrixCopy[7] * matrixCopy[13] +
+		matrixCopy[12] * matrixCopy[5] * matrixCopy[11] -
+		matrixCopy[12] * matrixCopy[7] * matrixCopy[9];
+
+	inverse[12] = -matrixCopy[4] * matrixCopy[9] * matrixCopy[14] +
+		matrixCopy[4] * matrixCopy[10] * matrixCopy[13] +
+		matrixCopy[8] * matrixCopy[5] * matrixCopy[14] -
+		matrixCopy[8] * matrixCopy[6] * matrixCopy[13] -
+		matrixCopy[12] * matrixCopy[5] * matrixCopy[10] +
+		matrixCopy[12] * matrixCopy[6] * matrixCopy[9];
+
+	inverse[1] = -matrixCopy[1] * matrixCopy[10] * matrixCopy[15] +
+		matrixCopy[1] * matrixCopy[11] * matrixCopy[14] +
+		matrixCopy[9] * matrixCopy[2] * matrixCopy[15] -
+		matrixCopy[9] * matrixCopy[3] * matrixCopy[14] -
+		matrixCopy[13] * matrixCopy[2] * matrixCopy[11] +
+		matrixCopy[13] * matrixCopy[3] * matrixCopy[10];
+
+	inverse[5] = matrixCopy[0] * matrixCopy[10] * matrixCopy[15] -
+		matrixCopy[0] * matrixCopy[11] * matrixCopy[14] -
+		matrixCopy[8] * matrixCopy[2] * matrixCopy[15] +
+		matrixCopy[8] * matrixCopy[3] * matrixCopy[14] +
+		matrixCopy[12] * matrixCopy[2] * matrixCopy[11] -
+		matrixCopy[12] * matrixCopy[3] * matrixCopy[10];
+
+	inverse[9] = -matrixCopy[0] * matrixCopy[9] * matrixCopy[15] +
+		matrixCopy[0] * matrixCopy[11] * matrixCopy[13] +
+		matrixCopy[8] * matrixCopy[1] * matrixCopy[15] -
+		matrixCopy[8] * matrixCopy[3] * matrixCopy[13] -
+		matrixCopy[12] * matrixCopy[1] * matrixCopy[11] +
+		matrixCopy[12] * matrixCopy[3] * matrixCopy[9];
+
+	inverse[13] = matrixCopy[0] * matrixCopy[9] * matrixCopy[14] -
+		matrixCopy[0] * matrixCopy[10] * matrixCopy[13] -
+		matrixCopy[8] * matrixCopy[1] * matrixCopy[14] +
+		matrixCopy[8] * matrixCopy[2] * matrixCopy[13] +
+		matrixCopy[12] * matrixCopy[1] * matrixCopy[10] -
+		matrixCopy[12] * matrixCopy[2] * matrixCopy[9];
+
+	inverse[2] = matrixCopy[1] * matrixCopy[6] * matrixCopy[15] -
+		matrixCopy[1] * matrixCopy[7] * matrixCopy[14] -
+		matrixCopy[5] * matrixCopy[2] * matrixCopy[15] +
+		matrixCopy[5] * matrixCopy[3] * matrixCopy[14] +
+		matrixCopy[13] * matrixCopy[2] * matrixCopy[7] -
+		matrixCopy[13] * matrixCopy[3] * matrixCopy[6];
+
+	inverse[6] = -matrixCopy[0] * matrixCopy[6] * matrixCopy[15] +
+		matrixCopy[0] * matrixCopy[7] * matrixCopy[14] +
+		matrixCopy[4] * matrixCopy[2] * matrixCopy[15] -
+		matrixCopy[4] * matrixCopy[3] * matrixCopy[14] -
+		matrixCopy[12] * matrixCopy[2] * matrixCopy[7] +
+		matrixCopy[12] * matrixCopy[3] * matrixCopy[6];
+
+	inverse[10] = matrixCopy[0] * matrixCopy[5] * matrixCopy[15] -
+		matrixCopy[0] * matrixCopy[7] * matrixCopy[13] -
+		matrixCopy[4] * matrixCopy[1] * matrixCopy[15] +
+		matrixCopy[4] * matrixCopy[3] * matrixCopy[13] +
+		matrixCopy[12] * matrixCopy[1] * matrixCopy[7] -
+		matrixCopy[12] * matrixCopy[3] * matrixCopy[5];
+
+	inverse[14] = -matrixCopy[0] * matrixCopy[5] * matrixCopy[14] +
+		matrixCopy[0] * matrixCopy[6] * matrixCopy[13] +
+		matrixCopy[4] * matrixCopy[1] * matrixCopy[14] -
+		matrixCopy[4] * matrixCopy[2] * matrixCopy[13] -
+		matrixCopy[12] * matrixCopy[1] * matrixCopy[6] +
+		matrixCopy[12] * matrixCopy[2] * matrixCopy[5];
+
+	inverse[3] = -matrixCopy[1] * matrixCopy[6] * matrixCopy[11] +
+		matrixCopy[1] * matrixCopy[7] * matrixCopy[10] +
+		matrixCopy[5] * matrixCopy[2] * matrixCopy[11] -
+		matrixCopy[5] * matrixCopy[3] * matrixCopy[10] -
+		matrixCopy[9] * matrixCopy[2] * matrixCopy[7] +
+		matrixCopy[9] * matrixCopy[3] * matrixCopy[6];
+
+	inverse[7] = matrixCopy[0] * matrixCopy[6] * matrixCopy[11] -
+		matrixCopy[0] * matrixCopy[7] * matrixCopy[10] -
+		matrixCopy[4] * matrixCopy[2] * matrixCopy[11] +
+		matrixCopy[4] * matrixCopy[3] * matrixCopy[10] +
+		matrixCopy[8] * matrixCopy[2] * matrixCopy[7] -
+		matrixCopy[8] * matrixCopy[3] * matrixCopy[6];
+
+	inverse[11] = -matrixCopy[0] * matrixCopy[5] * matrixCopy[11] +
+		matrixCopy[0] * matrixCopy[7] * matrixCopy[9] +
+		matrixCopy[4] * matrixCopy[1] * matrixCopy[11] -
+		matrixCopy[4] * matrixCopy[3] * matrixCopy[9] -
+		matrixCopy[8] * matrixCopy[1] * matrixCopy[7] +
+		matrixCopy[8] * matrixCopy[3] * matrixCopy[5];
+
+	inverse[15] = matrixCopy[0] * matrixCopy[5] * matrixCopy[10] -
+		matrixCopy[0] * matrixCopy[6] * matrixCopy[9] -
+		matrixCopy[4] * matrixCopy[1] * matrixCopy[10] +
+		matrixCopy[4] * matrixCopy[2] * matrixCopy[9] +
+		matrixCopy[8] * matrixCopy[1] * matrixCopy[6] -
+		matrixCopy[8] * matrixCopy[2] * matrixCopy[5];
+
+	determinant = (matrixCopy[0] * inverse[0]) + (matrixCopy[1] * inverse[4]) + (matrixCopy[2] * inverse[8]) + (matrixCopy[3] * inverse[12]);
+
+	if (determinant == 0)
+	{
+		return NULL;
+	}
+	else
+	{
+		determinant = 1 / determinant;
+		for (int i = 0; i < 16; i++)
+		{
+			inverse[i] = inverse[i] * determinant;
+		}
+
+		return inverse;
+	}
 }
 
 engine::matrix_4 engine::matrix_4::get_transpose()
@@ -172,7 +317,6 @@ engine::matrix_4 engine::matrix_4::operator*(const matrix_4 &pToMultiply) const
 		{
 			for (int j = 0; j < 4; j++)
 			{
-				newMatrix.mMatrix.mArray[rowCounter][i] = 0;
 				newMatrix.mMatrix.mArray[rowCounter][i] += mMatrix.mArray[rowCounter][j] * pToMultiply.mMatrix.mArray[j][i];
 			}
 		}

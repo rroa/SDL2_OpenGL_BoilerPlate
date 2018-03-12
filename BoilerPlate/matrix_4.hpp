@@ -14,10 +14,11 @@ namespace engine {
 	public:
 		matrix_4();
 		matrix_4(float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float);
-		matrix_4(float[]);
+		matrix_4(float[16]);
 		~matrix_4();
 
 		array_2D get_matrix();
+		matrix_4 get_invert();
 		matrix_4 get_transpose();
 		void set_identity();
 		Vector3 get_angle();
