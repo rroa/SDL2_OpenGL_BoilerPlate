@@ -1,11 +1,12 @@
 #pragma once
-#include "Vector3.hpp"
+#include "Vector_3.hpp"
 #include <iostream>
 
-namespace engine {
+namespace Engine {
 
 	class matrix_4
 	{
+		//This struct 
 		struct array_2D
 		{
 			float mArray[4][4];
@@ -21,7 +22,7 @@ namespace engine {
 		matrix_4 get_invert();
 		matrix_4 get_transpose();
 		void set_identity();
-		Vector3 get_angle();
+		Vector_3 get_angle();
 
 		float& operator [] (const int);
 		friend std::ostream& operator<<(std::ostream&, const matrix_4&);

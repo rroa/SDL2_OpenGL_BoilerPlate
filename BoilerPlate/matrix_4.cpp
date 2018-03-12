@@ -1,12 +1,12 @@
 #include "matrix_4.hpp"
 #include <cmath>
 
-engine::matrix_4::matrix_4()
+Engine::matrix_4::matrix_4()
 {
 	set_identity();
 }
 
-engine::matrix_4::matrix_4(float value1, float value2, float value3, float value4, float value5, float value6, float value7, float value8, float value9, float value10, float value11, float value12, float value13, float value14, float value15, float value16)
+Engine::matrix_4::matrix_4(float value1, float value2, float value3, float value4, float value5, float value6, float value7, float value8, float value9, float value10, float value11, float value12, float value13, float value14, float value15, float value16)
 {
 	mMatrix.mArray[0][0] = value1;
 	mMatrix.mArray[1][0] = value2;
@@ -29,7 +29,7 @@ engine::matrix_4::matrix_4(float value1, float value2, float value3, float value
 	mMatrix.mArray[3][3] = value16;
 }
 
-engine::matrix_4::matrix_4(float pValues[16])
+Engine::matrix_4::matrix_4(float pValues[16])
 {
 	int arrayIndex = 0;
 	for (int i = 0; i < 4; i++)
@@ -44,11 +44,11 @@ engine::matrix_4::matrix_4(float pValues[16])
 }
 
 
-engine::matrix_4::~matrix_4()
+Engine::matrix_4::~matrix_4()
 {
 }
 
-void engine::matrix_4::set_identity()
+void Engine::matrix_4::set_identity()
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -66,32 +66,32 @@ void engine::matrix_4::set_identity()
 	}
 }
 
-Vector3 engine::matrix_4::get_angle()
+Engine::Vector_3 Engine::matrix_4::get_angle()
 {
-	Vector3 euclideanAngle;
+	Vector_3 euclideanAngle;
 
 	if (mMatrix.mArray[0][0] == 1.0f || mMatrix.mArray[0][0] == -1.0f)
 	{
-		euclideanAngle.x = 0;
-		euclideanAngle.y = atan2f(mMatrix.mArray[0][2], mMatrix.mArray[2][3]);
-		euclideanAngle.z = 0;
+		euclideanAngle.mX = 0;
+		euclideanAngle.mY= atan2f(mMatrix.mArray[0][2], mMatrix.mArray[2][3]);
+		euclideanAngle.mZ = 0;
 	}
 	else
 	{
-		euclideanAngle.x = asinf(mMatrix.mArray[1][0]);
-		euclideanAngle.y = atan2f(-mMatrix.mArray[2][0], mMatrix.mArray[0][0]);
-		euclideanAngle.z = atan2f(-mMatrix.mArray[1][2], mMatrix.mArray[1][1]);
+		euclideanAngle.mX = asinf(mMatrix.mArray[1][0]);
+		euclideanAngle.mY = atan2f(-mMatrix.mArray[2][0], mMatrix.mArray[0][0]);
+		euclideanAngle.mZ = atan2f(-mMatrix.mArray[1][2], mMatrix.mArray[1][1]);
 	}
 
 	return euclideanAngle;
 }
 
-engine::matrix_4::array_2D engine::matrix_4::get_matrix()
+Engine::matrix_4::array_2D Engine::matrix_4::get_matrix()
 {
 	return mMatrix;
 }
 
-engine::matrix_4 engine::matrix_4::get_invert()
+Engine::matrix_4 Engine::matrix_4::get_invert()
 {
 	float determinant;
 	matrix_4 inverse, matrixCopy;
@@ -227,9 +227,9 @@ engine::matrix_4 engine::matrix_4::get_invert()
 	}
 }
 
-engine::matrix_4 engine::matrix_4::get_transpose()
+Engine::matrix_4 Engine::matrix_4::get_transpose()
 {
-	engine::matrix_4 transposedMatrix;
+	Engine::matrix_4 transposedMatrix;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -242,14 +242,14 @@ engine::matrix_4 engine::matrix_4::get_transpose()
 	return transposedMatrix;
 }
 
-float& engine::matrix_4::operator[](const int pIndex)
+float& Engine::matrix_4::operator[](const int pIndex)
 {
 	int rowIndex = pIndex % 4;
 	int columnIndex = pIndex / 4;
 	return mMatrix.mArray[rowIndex][columnIndex];
 }
 
-std::ostream & engine::operator<<(std::ostream &pOs, const matrix_4 &matrix)
+std::ostream & Engine::operator<<(std::ostream &pOs, const matrix_4 &matrix)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -263,7 +263,7 @@ std::ostream & engine::operator<<(std::ostream &pOs, const matrix_4 &matrix)
 	return pOs;
 }
 
-engine::matrix_4 & engine::matrix_4::operator=(const matrix_4 &pToEqual)
+Engine::matrix_4 & Engine::matrix_4::operator=(const matrix_4 &pToEqual)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -276,7 +276,7 @@ engine::matrix_4 & engine::matrix_4::operator=(const matrix_4 &pToEqual)
 	return *this;
 }
 
-engine::matrix_4 engine::matrix_4::operator+(const matrix_4 &pToAdd) const
+Engine::matrix_4 Engine::matrix_4::operator+(const matrix_4 &pToAdd) const
 {
 	matrix_4 newMatrix;
 
@@ -291,7 +291,7 @@ engine::matrix_4 engine::matrix_4::operator+(const matrix_4 &pToAdd) const
 	return newMatrix;
 }
 
-engine::matrix_4 engine::matrix_4::operator-(const matrix_4 &pToSubstract) const
+Engine::matrix_4 Engine::matrix_4::operator-(const matrix_4 &pToSubstract) const
 {
 	matrix_4 newMatrix;
 
@@ -306,7 +306,7 @@ engine::matrix_4 engine::matrix_4::operator-(const matrix_4 &pToSubstract) const
 	return newMatrix;
 }
 
-engine::matrix_4 engine::matrix_4::operator*(const matrix_4 &pToMultiply) const
+Engine::matrix_4 Engine::matrix_4::operator*(const matrix_4 &pToMultiply) const
 {
 	matrix_4 newMatrix;
 	int rowCounter = 0;

@@ -18,8 +18,8 @@ const int HEIGHT = 640;
 int main(int argc, char* argv[])
 {
 
-	engine::matrix_4 test = engine::matrix_4(2, 3, 5, 9, 4, 2, 5, 3, 0, 0, 1, 3, 4, 2, 0, 4);
-	engine::matrix_4 mult = engine::matrix_4(4, 6, 1, 2, 3, 0, 1, 4, 7, 3, 1, 0, 2, 0, 1, 4);
+	Engine::matrix_4 test = Engine::matrix_4(2, 3, 5, 9, 4, 2, 5, 3, 0, 0, 1, 3, 4, 2, 0, 4);
+	Engine::matrix_4 mult = Engine::matrix_4(4, 6, 1, 2, 3, 0, 1, 4, 7, 3, 1, 0, 2, 0, 1, 4);
 
 	test = test * mult;
 
