@@ -6,11 +6,21 @@
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="stb_image.c" />
+    <ClCompile Include="matrix_4.cpp" />
+    <ClCompile Include="Math_Utilities.cpp" />
+    <ClCompile Include="Vector_2.cpp" />
+    <ClCompile Include="Vector_3.cpp" />
+    <ClCompile Include="Vector_4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="TimeManager.hpp" />
+    <ClInclude Include="matrix_4.hpp" />
+    <ClInclude Include="Math_Utilities.hpp" />
+    <ClInclude Include="Vector_2.hpp" />
+    <ClInclude Include="Vector_3.hpp" />
+    <ClInclude Include="Vector_4.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
