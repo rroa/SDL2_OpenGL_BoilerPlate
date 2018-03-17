@@ -163,119 +163,119 @@ namespace Engine
 		matrix_4 inverse, matrixCopy;
 		matrixCopy = *this;
 
-		inverse.mMatrix[0] =	matrixCopy.mMatrix[5] *  matrixCopy.mMatrix[10] * matrixCopy.mMatrix[15] -
-								matrixCopy.mMatrix[5] *  matrixCopy.mMatrix[11] * matrixCopy.mMatrix[14] -
-								matrixCopy.mMatrix[9] *  matrixCopy.mMatrix[6] *  matrixCopy.mMatrix[15] +
-								matrixCopy.mMatrix[9] *  matrixCopy.mMatrix[7] *  matrixCopy.mMatrix[14] +
-								matrixCopy.mMatrix[13] * matrixCopy.mMatrix[6] *  matrixCopy.mMatrix[11] -
-								matrixCopy.mMatrix[13] * matrixCopy.mMatrix[7] *  matrixCopy.mMatrix[10];
+		inverse.mMatrix[0] =   matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[10] *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[11] *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[13] *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[11] -
+							   matrixCopy.mMatrix[13] *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[10];
 
-		inverse.mMatrix[4] =   -matrixCopy.mMatrix[4] *  matrixCopy.mMatrix[10] * matrixCopy.mMatrix[15] +
-								 matrixCopy.mMatrix[4] *  matrixCopy.mMatrix[11] * matrixCopy.mMatrix[14] +
-								 matrixCopy.mMatrix[8] *  matrixCopy.mMatrix[6] *  matrixCopy.mMatrix[15] -
-								 matrixCopy.mMatrix[8] *  matrixCopy.mMatrix[7] *  matrixCopy.mMatrix[14] -
-								 matrixCopy.mMatrix[12] * matrixCopy.mMatrix[6] *  matrixCopy.mMatrix[11] +
-								 matrixCopy.mMatrix[12] * matrixCopy.mMatrix[7] *  matrixCopy.mMatrix[10];
+		inverse.mMatrix[4] =  -matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[10] *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[11] *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[11] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[10];
 
-		inverse.mMatrix[8] =	 matrixCopy[4] * matrixCopy[9] * matrixCopy[15] -
-								 matrixCopy[4] * matrixCopy[11] * matrixCopy[13] -
-								 matrixCopy[8] * matrixCopy[5] * matrixCopy[15] +
-								 matrixCopy[8] * matrixCopy[7] * matrixCopy[13] +
-								 matrixCopy[12] * matrixCopy[5] * matrixCopy[11] -
-								 matrixCopy[12] * matrixCopy[7] * matrixCopy[9];
+		inverse.mMatrix[8] =   matrixCopy.mMatrix[4]  *	 matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[4]  *	 matrixCopy.mMatrix[11] *  matrixCopy.mMatrix[13] -
+							   matrixCopy.mMatrix[8]  *	 matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[8]  *	 matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[13] +
+							   matrixCopy.mMatrix[12] *	 matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[11] -
+							   matrixCopy.mMatrix[12] *	 matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[9];
 
-		inverse.mMatrix[12] = -matrixCopy[4] * matrixCopy[9] * matrixCopy[14] +
-			matrixCopy[4] * matrixCopy[10] * matrixCopy[13] +
-			matrixCopy[8] * matrixCopy[5] * matrixCopy[14] -
-			matrixCopy[8] * matrixCopy[6] * matrixCopy[13] -
-			matrixCopy[12] * matrixCopy[5] * matrixCopy[10] +
-			matrixCopy[12] * matrixCopy[6] * matrixCopy[9];
+		inverse.mMatrix[12] = -matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[10] *  matrixCopy.mMatrix[13] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[13] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[10] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[9];
 
-		inverse[1] = -matrixCopy[1] * matrixCopy[10] * matrixCopy[15] +
-			matrixCopy[1] * matrixCopy[11] * matrixCopy[14] +
-			matrixCopy[9] * matrixCopy[2] * matrixCopy[15] -
-			matrixCopy[9] * matrixCopy[3] * matrixCopy[14] -
-			matrixCopy[13] * matrixCopy[2] * matrixCopy[11] +
-			matrixCopy[13] * matrixCopy[3] * matrixCopy[10];
+		inverse.mMatrix[1] =  -matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[10] *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[11] *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[13] *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[11] +
+							   matrixCopy.mMatrix[13] *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[10];
+													     
+		inverse.mMatrix[5] =   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[10] *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[11] *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[11] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[10];
 
-		inverse[5] = matrixCopy[0] * matrixCopy[10] * matrixCopy[15] -
-			matrixCopy[0] * matrixCopy[11] * matrixCopy[14] -
-			matrixCopy[8] * matrixCopy[2] * matrixCopy[15] +
-			matrixCopy[8] * matrixCopy[3] * matrixCopy[14] +
-			matrixCopy[12] * matrixCopy[2] * matrixCopy[11] -
-			matrixCopy[12] * matrixCopy[3] * matrixCopy[10];
+		inverse.mMatrix[9] =  -matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[11] *  matrixCopy.mMatrix[13] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[13] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[11] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[9];
 
-		inverse[9] = -matrixCopy[0] * matrixCopy[9] * matrixCopy[15] +
-			matrixCopy[0] * matrixCopy[11] * matrixCopy[13] +
-			matrixCopy[8] * matrixCopy[1] * matrixCopy[15] -
-			matrixCopy[8] * matrixCopy[3] * matrixCopy[13] -
-			matrixCopy[12] * matrixCopy[1] * matrixCopy[11] +
-			matrixCopy[12] * matrixCopy[3] * matrixCopy[9];
+		inverse.mMatrix[13] =  matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[10] *  matrixCopy.mMatrix[13] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[13] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[10] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[9];
 
-		inverse[13] = matrixCopy[0] * matrixCopy[9] * matrixCopy[14] -
-			matrixCopy[0] * matrixCopy[10] * matrixCopy[13] -
-			matrixCopy[8] * matrixCopy[1] * matrixCopy[14] +
-			matrixCopy[8] * matrixCopy[2] * matrixCopy[13] +
-			matrixCopy[12] * matrixCopy[1] * matrixCopy[10] -
-			matrixCopy[12] * matrixCopy[2] * matrixCopy[9];
+		inverse.mMatrix[2] =   matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[13] *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[7]  -
+							   matrixCopy.mMatrix[13] *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[6];
 
-		inverse[2] = matrixCopy[1] * matrixCopy[6] * matrixCopy[15] -
-			matrixCopy[1] * matrixCopy[7] * matrixCopy[14] -
-			matrixCopy[5] * matrixCopy[2] * matrixCopy[15] +
-			matrixCopy[5] * matrixCopy[3] * matrixCopy[14] +
-			matrixCopy[13] * matrixCopy[2] * matrixCopy[7] -
-			matrixCopy[13] * matrixCopy[3] * matrixCopy[6];
+		inverse.mMatrix[6] =  -matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[7] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[6];
 
-		inverse[6] = -matrixCopy[0] * matrixCopy[6] * matrixCopy[15] +
-			matrixCopy[0] * matrixCopy[7] * matrixCopy[14] +
-			matrixCopy[4] * matrixCopy[2] * matrixCopy[15] -
-			matrixCopy[4] * matrixCopy[3] * matrixCopy[14] -
-			matrixCopy[12] * matrixCopy[2] * matrixCopy[7] +
-			matrixCopy[12] * matrixCopy[3] * matrixCopy[6];
+		inverse.mMatrix[10] =  matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[15] -
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[13] -
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[15] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[13] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[7] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[5];
 
-		inverse[10] = matrixCopy[0] * matrixCopy[5] * matrixCopy[15] -
-			matrixCopy[0] * matrixCopy[7] * matrixCopy[13] -
-			matrixCopy[4] * matrixCopy[1] * matrixCopy[15] +
-			matrixCopy[4] * matrixCopy[3] * matrixCopy[13] +
-			matrixCopy[12] * matrixCopy[1] * matrixCopy[7] -
-			matrixCopy[12] * matrixCopy[3] * matrixCopy[5];
+		inverse.mMatrix[14] = -matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[14] +
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[13] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[14] -
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[13] -
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[6] +
+							   matrixCopy.mMatrix[12] *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[5];
 
-		inverse[14] = -matrixCopy[0] * matrixCopy[5] * matrixCopy[14] +
-			matrixCopy[0] * matrixCopy[6] * matrixCopy[13] +
-			matrixCopy[4] * matrixCopy[1] * matrixCopy[14] -
-			matrixCopy[4] * matrixCopy[2] * matrixCopy[13] -
-			matrixCopy[12] * matrixCopy[1] * matrixCopy[6] +
-			matrixCopy[12] * matrixCopy[2] * matrixCopy[5];
+		inverse.mMatrix[3] =  -matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[11] +
+							   matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[10] +
+							   matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[11] -
+							   matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[10] -
+							   matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[7] +
+							   matrixCopy.mMatrix[9]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[6];
 
-		inverse[3] = -matrixCopy[1] * matrixCopy[6] * matrixCopy[11] +
-			matrixCopy[1] * matrixCopy[7] * matrixCopy[10] +
-			matrixCopy[5] * matrixCopy[2] * matrixCopy[11] -
-			matrixCopy[5] * matrixCopy[3] * matrixCopy[10] -
-			matrixCopy[9] * matrixCopy[2] * matrixCopy[7] +
-			matrixCopy[9] * matrixCopy[3] * matrixCopy[6];
+		inverse.mMatrix[7] =   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[11] -
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[10] -
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[11] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[10] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[7] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[6];
 
-		inverse[7] = matrixCopy[0] * matrixCopy[6] * matrixCopy[11] -
-			matrixCopy[0] * matrixCopy[7] * matrixCopy[10] -
-			matrixCopy[4] * matrixCopy[2] * matrixCopy[11] +
-			matrixCopy[4] * matrixCopy[3] * matrixCopy[10] +
-			matrixCopy[8] * matrixCopy[2] * matrixCopy[7] -
-			matrixCopy[8] * matrixCopy[3] * matrixCopy[6];
+		inverse.mMatrix[11] = -matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[11] +
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[7]  *  matrixCopy.mMatrix[9] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[11] -
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[9] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[7] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[3]  *  matrixCopy.mMatrix[5];
 
-		inverse[11] = -matrixCopy[0] * matrixCopy[5] * matrixCopy[11] +
-			matrixCopy[0] * matrixCopy[7] * matrixCopy[9] +
-			matrixCopy[4] * matrixCopy[1] * matrixCopy[11] -
-			matrixCopy[4] * matrixCopy[3] * matrixCopy[9] -
-			matrixCopy[8] * matrixCopy[1] * matrixCopy[7] +
-			matrixCopy[8] * matrixCopy[3] * matrixCopy[5];
+		inverse.mMatrix[15] =  matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[5]  *  matrixCopy.mMatrix[10] -
+							   matrixCopy.mMatrix[0]  *  matrixCopy.mMatrix[6]  *  matrixCopy.mMatrix[9] -
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[10] +
+							   matrixCopy.mMatrix[4]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[9] +
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[1]  *  matrixCopy.mMatrix[6] -
+							   matrixCopy.mMatrix[8]  *  matrixCopy.mMatrix[2]  *  matrixCopy.mMatrix[5];
 
-		inverse[15] = matrixCopy[0] * matrixCopy[5] * matrixCopy[10] -
-			matrixCopy[0] * matrixCopy[6] * matrixCopy[9] -
-			matrixCopy[4] * matrixCopy[1] * matrixCopy[10] +
-			matrixCopy[4] * matrixCopy[2] * matrixCopy[9] +
-			matrixCopy[8] * matrixCopy[1] * matrixCopy[6] -
-			matrixCopy[8] * matrixCopy[2] * matrixCopy[5];
-
-		determinant = (matrixCopy[0] * inverse[0]) + (matrixCopy[1] * inverse[4]) + (matrixCopy[2] * inverse[8]) + (matrixCopy[3] * inverse[12]);
+		determinant = (matrixCopy.mMatrix[0] * inverse.mMatrix[0]) + (matrixCopy.mMatrix[1] * inverse.mMatrix[4]) + (matrixCopy.mMatrix[2] * inverse.mMatrix[8]) + (matrixCopy.mMatrix[3] * inverse.mMatrix[12]);
 
 		if (determinant == 0)
 		{
@@ -287,7 +287,7 @@ namespace Engine
 			determinant = 1 / determinant;
 			for (int i = 0; i < 16; i++)
 			{
-				inverse[i] = inverse[i] * determinant;
+				inverse.mMatrix[i] = inverse.mMatrix[i] * determinant;
 			}
 
 			return inverse;
@@ -298,21 +298,21 @@ namespace Engine
 	{
 		matrix_4 transposedMatrix;
 
-		transposedMatrix[1] = mMatrix[4];
-		transposedMatrix[2] = mMatrix[8];
-		transposedMatrix[3] = mMatrix[12];
+		transposedMatrix.mMatrix[1] = mMatrix[4];
+		transposedMatrix.mMatrix[2] = mMatrix[8];
+		transposedMatrix.mMatrix[3] = mMatrix[12];
+						
+		transposedMatrix.mMatrix[4] = mMatrix[1];
+		transposedMatrix.mMatrix[6] = mMatrix[9];
+		transposedMatrix.mMatrix[7] = mMatrix[13];
 
-		transposedMatrix[4] = mMatrix[1];
-		transposedMatrix[6] = mMatrix[9];
-		transposedMatrix[7] = mMatrix[13];
+		transposedMatrix.mMatrix[8] = mMatrix[2];
+		transposedMatrix.mMatrix[9] = mMatrix[6];
+		transposedMatrix.mMatrix[11] = mMatrix[14];
 
-		transposedMatrix[8] = mMatrix[2];
-		transposedMatrix[9] = mMatrix[6];
-		transposedMatrix[11] = mMatrix[14];
-
-		transposedMatrix[12] = mMatrix[3];
-		transposedMatrix[13] = mMatrix[7];
-		transposedMatrix[14] = mMatrix[11];
+		transposedMatrix.mMatrix[12] = mMatrix[3];
+		transposedMatrix.mMatrix[13] = mMatrix[7];
+		transposedMatrix.mMatrix[14] = mMatrix[11];
 
 		return transposedMatrix;
 	}
