@@ -5,7 +5,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="stb_image.c" />
     <ClCompile Include="matrix_4.cpp" />
     <ClCompile Include="Math_Utilities.cpp" />
     <ClCompile Include="Vector_2.cpp" />
@@ -21,6 +20,7 @@
     <ClInclude Include="Vector_2.hpp" />
     <ClInclude Include="Vector_3.hpp" />
     <ClInclude Include="Vector_4.hpp" />
+    <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

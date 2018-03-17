@@ -36,16 +36,7 @@ namespace Engine
 	//Takes an array with 16 positions
 	matrix_4::matrix_4(float pValues[16])
 	{
-		int arrayIndex = 0;
-		for (int i = 0; i < 4; i++)
-		{
-			for (int j = 0; j < 4; j++)
-			{
-				mMatrix.mArray[j][i] = pValues[arrayIndex];
-				arrayIndex++;
-			}
-		}
-
+		
 	}
 
 

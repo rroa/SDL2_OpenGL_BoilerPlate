@@ -12,6 +12,10 @@
 #include <fstream>
 #include <sstream>
 
+//
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
@@ -21,6 +25,8 @@ namespace Engine
 	GLuint VertexArrayObject; //VAO
 	GLuint VertexBufferObject; //VBO
 	GLuint ProgramID;
+	GLuint Texture1;
+	GLuint Texture2;
 
 	GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path) {
 
@@ -117,6 +123,36 @@ namespace Engine
 		return ProgramID;
 	}
 
+	GLuint LoadTexture(const char * texture_path)
+	{
+		unsigned int texture;
+		glGenTextures(1, &texture);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		// set the texture wrapping/filtering options (on the currently bound texture object)
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		int width, height, nrChannels;
+
+		// Load the texture
+		unsigned char *data = stbi_load(texture_path, &width, &height, &nrChannels, 0);
+		if (data)
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			glGenerateMipmap(GL_TEXTURE_2D);
+		}
+		else
+		{
+			std::cout << "Failed to load texture" << std::endl;
+			return -1;
+		}
+		stbi_image_free(data);
+
+		return texture;
+	}
+
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
 		, m_width(width)
@@ -149,6 +185,8 @@ namespace Engine
 		//MOVE THIS
 
 		ProgramID = LoadShaders("vertex.glsl", "frag.glsl");
+		Texture1 = LoadTexture("test.png");
+		Texture2 = LoadTexture("face.png");
 
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
