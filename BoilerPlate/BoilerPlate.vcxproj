@@ -175,7 +175,10 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math_Utilities.cpp" />
     <ClCompile Include="matrix_4.cpp" />
+    <ClCompile Include="renderer.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
+    <ClCompile Include="shaders_utilities.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Vector_2.cpp" />
     <ClCompile Include="Vector_3.cpp" />
@@ -185,8 +188,11 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="App.hpp" />
     <ClInclude Include="Math_Utilities.hpp" />
     <ClInclude Include="matrix_4.hpp" />
+    <ClInclude Include="renderer.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
+    <ClInclude Include="shaders_utilities.hpp" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="texture.hpp" />
     <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="Vector_2.hpp" />
     <ClInclude Include="Vector_3.hpp" />

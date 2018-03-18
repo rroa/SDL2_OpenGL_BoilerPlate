@@ -20,7 +20,6 @@ int main(int argc, char* argv[])
 
 	Engine::matrix_4 test = Engine::matrix_4();
 
-	std::cout << test;
 
 #if _MSC_VER && _DEBUG
 	// https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx
