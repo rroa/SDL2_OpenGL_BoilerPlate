@@ -18,16 +18,9 @@ const int HEIGHT = 640;
 int main(int argc, char* argv[])
 {
 
-	Engine::matrix_4 test = Engine::matrix_4();
-
-
-#if _MSC_VER && _DEBUG
-	// https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx
-	// This will help you detect leaks when using Visual C++
-	// Uncomment this line to start getting reports!
-	assert(_CrtCheckMemory());
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-#endif
+	Engine::matrix_4 test = Engine::matrix_4(2,3,5,9,4,2,5,3,0,0,1,3,4,2,0,4);
+	Engine::matrix_4 inverse = test.get_invert();
+	std::cout << inverse;
 
 	// Create Game Object
 	//

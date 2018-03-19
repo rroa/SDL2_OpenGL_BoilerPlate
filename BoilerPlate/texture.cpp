@@ -3,9 +3,13 @@
 #include "stb_image.h"
 #include <iostream>
 
-
 texture::texture()
 {
+}
+
+texture::texture(const char *pTextureFile)
+{
+	mTexture = load_texture(pTextureFile);
 }
 
 

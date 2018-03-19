@@ -7,8 +7,11 @@ class texture
 {
 public:
 	texture();
+	texture(const char *);
 	~texture();
 
 	GLuint load_texture(const char *);
+private:
+	GLuint mTexture;
 };
 

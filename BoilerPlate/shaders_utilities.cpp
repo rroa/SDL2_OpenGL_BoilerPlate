@@ -1,7 +1,6 @@
 #include "shaders_utilities.hpp"
 
 
-
 shaders_utilities::shaders_utilities()
 {
 }
