@@ -13,6 +13,7 @@
     <ClCompile Include="shaders_utilities.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="error_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -27,6 +28,8 @@
     <ClInclude Include="shaders_utilities.hpp" />
     <ClInclude Include="texture.hpp" />
     <ClInclude Include="renderer.hpp" />
+    <ClInclude Include="vertex.hpp" />
+    <ClInclude Include="error_manager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

@@ -172,6 +172,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="error_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math_Utilities.cpp" />
     <ClCompile Include="matrix_4.cpp" />
@@ -186,6 +187,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
+    <ClInclude Include="error_manager.hpp" />
     <ClInclude Include="Math_Utilities.hpp" />
     <ClInclude Include="matrix_4.hpp" />
     <ClInclude Include="renderer.hpp" />
@@ -197,6 +199,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="Vector_2.hpp" />
     <ClInclude Include="Vector_3.hpp" />
     <ClInclude Include="Vector_4.hpp" />
+    <ClInclude Include="vertex.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.glsl" />

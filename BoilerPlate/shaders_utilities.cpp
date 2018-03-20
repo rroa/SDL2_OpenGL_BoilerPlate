@@ -3,6 +3,7 @@
 
 shaders_utilities::shaders_utilities()
 {
+	errorManager = error_manager();
 }
 
 
@@ -10,11 +11,13 @@ shaders_utilities::~shaders_utilities()
 {
 }
 
-GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *pFragmentFilePath)
+
+GLuint shaders_utilities::load_shaders(const char* pVertexFilePath, const char* pFragmentFilePath)
 {
 	// Create the shaders
 	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+	int InfoLogLength;
 
 	// Read the Vertex Shader code from the file
 	std::string VertexShaderCode;
@@ -26,7 +29,7 @@ GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *
 		VertexShaderStream.close();
 	}
 	else {
-		printf("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n", pVertexFilePath);
+		errorManager.show_errors(pVertexFilePath, "22", "Impossible to open. Are you in the right directory? Don't forget to read the FAQ!\n", " ");
 		getchar();
 		return 0;
 	}
@@ -42,7 +45,6 @@ GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *
 	}
 
 	GLint Result = GL_FALSE;
-	int InfoLogLength;
 
 
 	// Compile Vertex Shader
@@ -57,7 +59,7 @@ GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *
 	if (InfoLogLength > 0) {
 		std::vector<char> VertexShaderErrorMessage(InfoLogLength + 1);
 		glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
-		printf("%s\n", &VertexShaderErrorMessage[0]);
+		//errorManager.show_errors(pVertexFilePath, "57", &VertexShaderErrorMessage[0], " ");
 	}
 
 
@@ -74,10 +76,8 @@ GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *
 	if (InfoLogLength > 0) {
 		std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
 		glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
-		printf("%s\n", &FragmentShaderErrorMessage[0]);
+		//errorManager.show_errors(pFragmentFilePath, "74", &FragmentShaderErrorMessage[0], " ");
 	}
-
-
 
 	// Link the program
 	printf("Linking program\n");
@@ -92,7 +92,7 @@ GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *
 	if (InfoLogLength > 0) {
 		std::vector<char> ProgramErrorMessage(InfoLogLength + 1);
 		glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
-		printf("%s\n", &ProgramErrorMessage[0]);
+		errorManager.show_errors(pVertexFilePath, "90", &ProgramErrorMessage[0], " ");
 	}
 
 
@@ -104,3 +104,5 @@ GLuint shaders_utilities::load_shaders(const char *pVertexFilePath, const char *
 
 	return ProgramID;
 }
+
+

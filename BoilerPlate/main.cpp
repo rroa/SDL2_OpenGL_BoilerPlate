@@ -17,11 +17,6 @@ const int HEIGHT = 640;
 
 int main(int argc, char* argv[])
 {
-
-	Engine::matrix_4 test = Engine::matrix_4(2,3,5,9,4,2,5,3,0,0,1,3,4,2,0,4);
-	Engine::matrix_4 inverse = test.get_invert();
-	std::cout << inverse;
-
 	// Create Game Object
 	//
 	Engine::App* app = new Engine::App("Boiler Plate!", WIDTH, HEIGHT);
