@@ -1,6 +1,6 @@
 #pragma once
 struct vertex
 {
-	float coordinates[4];
+	float mCoordinates[3];
 };
 

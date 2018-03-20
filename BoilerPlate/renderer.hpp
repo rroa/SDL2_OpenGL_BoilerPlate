@@ -11,7 +11,6 @@ public:
 	~renderer();
 	void vertex_loader();
 	void textures_loader(const char* pTextureFiles[]);
-	void fill_vertices();
 	void get_program_id();
 	void render();
 

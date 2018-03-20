@@ -53,7 +53,7 @@ void renderer::vertex_loader()
 		3,                  // size
 		GL_FLOAT,           // type
 		GL_FALSE,           // normalized?
-		4 * sizeof(float),  // stride
+		3 * sizeof(float),  // stride
 		(void*)0            // array buffer offset
 	);
 
@@ -81,11 +81,6 @@ void renderer::textures_loader(const char* pTextureFiles[])
 	}
 }
 
-void renderer::fill_vertices()
-{
-	
-}
-
 void renderer::get_program_id()
 {
 	mProgramID = mShaderManager.load_shaders("vertex.glsl", "frag.glsl");
@@ -98,5 +93,4 @@ void renderer::render()
 	glBindVertexArray(mVertexArrayObject);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
 	glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
-	//glDrawArrays(GL_TRIANGLES, 0, 6); 
 }
