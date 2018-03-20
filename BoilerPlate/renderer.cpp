@@ -7,12 +7,12 @@ vertex vertices[] = {
 	{0.5f, -0.5f, 0.0f},  // bottom right
 	{-0.5f,  0.5f, 0.0f}, // top left 
 	// second triangle
-	{0.5f, -0.5f, 0.0f},  // bottom right
 	{-0.5f, -0.5f, 0.0f}, // bottom left
-	{-0.5f,  0.5f, 0.0f}  // top left
 };
 
-int indices[] = { 0, 1, 2, 1, 3, 2 };
+int indices[] = {
+	0, 1, 2, 
+	1, 3, 2 };
 
 renderer::renderer()
 {
@@ -50,7 +50,7 @@ void renderer::vertex_loader()
 
 	glVertexAttribPointer(
 		0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-		4,                  // size
+		3,                  // size
 		GL_FLOAT,           // type
 		GL_FALSE,           // normalized?
 		4 * sizeof(float),  // stride
@@ -96,6 +96,7 @@ void renderer::render()
 	//Use the program
 	glUseProgram(mProgramID);
 	glBindVertexArray(mVertexArrayObject);
-	//glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_BYTE, (void*)0);
-	glDrawArrays(GL_TRIANGLES, 0, 6); 
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+	glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+	//glDrawArrays(GL_TRIANGLES, 0, 6); 
 }
