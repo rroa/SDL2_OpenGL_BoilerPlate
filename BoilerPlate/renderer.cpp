@@ -16,7 +16,7 @@ int indices[] = {
 
 renderer::renderer()
 {
-	
+	fillOrLineDrawing = false;
 }
 
 
@@ -68,9 +68,6 @@ void renderer::vertex_loader()
 	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	glBindVertexArray(0);
-
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void renderer::textures_loader(const char* pTextureFiles[])
@@ -93,4 +90,18 @@ void renderer::render()
 	glBindVertexArray(mVertexArrayObject);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
 	glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+}
+
+void renderer::toggle_fill_or_line()
+{
+	if (fillOrLineDrawing)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		fillOrLineDrawing = false;
+	}
+	else
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		fillOrLineDrawing = true;
+	}
 }

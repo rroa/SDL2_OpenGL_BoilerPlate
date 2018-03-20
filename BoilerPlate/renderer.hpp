@@ -13,6 +13,9 @@ public:
 	void textures_loader(const char* pTextureFiles[]);
 	void get_program_id();
 	void render();
+	void toggle_fill_or_line();
+
+	bool fillOrLineDrawing;
 
 private:
 	GLuint mVertexArrayObject; //VAO
