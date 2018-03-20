@@ -1,6 +1,7 @@
 #include "renderer.hpp"
 #include "vertex.hpp"
 
+//TO DO: move this out!!
 vertex vertices[] = {
 	// first triangle
 	{0.5f,  0.5f, 0.0f},  // top right
@@ -70,6 +71,8 @@ void renderer::vertex_loader()
 	glBindVertexArray(0);
 }
 
+
+//Implemented function but not used
 void renderer::textures_loader(const char* pTextureFiles[])
 {
 	for (int i = 0; i < sizeof(pTextureFiles); i++) 

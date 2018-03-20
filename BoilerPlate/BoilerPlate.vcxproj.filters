@@ -1,35 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="matrix_4.cpp" />
-    <ClCompile Include="Math_Utilities.cpp" />
-    <ClCompile Include="Vector_2.cpp" />
-    <ClCompile Include="Vector_3.cpp" />
-    <ClCompile Include="Vector_4.cpp" />
-    <ClCompile Include="shaders_utilities.cpp" />
-    <ClCompile Include="texture.cpp" />
-    <ClCompile Include="renderer.cpp" />
-    <ClCompile Include="error_manager.cpp" />
+    <ClCompile Include="error_manager.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math_Utilities.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="matrix_4.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="shaders_utilities.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector_2.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector_3.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector_4.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="matrix_4.hpp" />
-    <ClInclude Include="Math_Utilities.hpp" />
-    <ClInclude Include="Vector_2.hpp" />
-    <ClInclude Include="Vector_3.hpp" />
-    <ClInclude Include="Vector_4.hpp" />
     <ClInclude Include="stb_image.h" />
-    <ClInclude Include="shaders_utilities.hpp" />
-    <ClInclude Include="texture.hpp" />
-    <ClInclude Include="renderer.hpp" />
-    <ClInclude Include="vertex.hpp" />
-    <ClInclude Include="error_manager.hpp" />
+    <ClInclude Include="error_manager.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Math_Utilities.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix_4.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaders_utilities.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector_2.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector_3.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector_4.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="vertex.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -40,9 +78,6 @@
     </Filter>
     <Filter Include="Engine\Header files">
       <UniqueIdentifier>{da8cc683-e66e-46b9-be58-7d0e16e23f76}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{adc24ec0-abeb-412a-a033-fd1233851c7f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
