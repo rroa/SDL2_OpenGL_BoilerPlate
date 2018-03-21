@@ -68,6 +68,21 @@
     <ClInclude Include="vertex.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="i_render.h">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="i_update.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="unique_id.h">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="component.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -78,6 +93,9 @@
     </Filter>
     <Filter Include="Engine\Header files">
       <UniqueIdentifier>{da8cc683-e66e-46b9-be58-7d0e16e23f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\core">
+      <UniqueIdentifier>{1c41bd96-7291-4a07-8e68-8140ae2eb9a0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
