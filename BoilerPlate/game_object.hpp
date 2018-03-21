@@ -1,10 +1,14 @@
 #pragma once
 
+#ifndef _GAME_OBJECT_HPP
+#define _GAME_OBJECT_HPP
+
 #include <vector>
 
+#include "i_render.hpp"
 #include "i_update.hpp"
-#include "i_render.h"
-#include "unique_id.h"
+#include "unique_id.hpp"
+
 namespace Engine
 {
 	namespace core
@@ -18,7 +22,7 @@ namespace Engine
 			~game_object();
 
 		protected:
-			
+
 		};
 
 		game_object::game_object()
@@ -30,3 +34,7 @@ namespace Engine
 		}
 	}
 }
+
+#endif // !_GAME_OBJECT_HPP
+
+

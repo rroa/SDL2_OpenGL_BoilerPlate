@@ -1,5 +1,6 @@
-#include "matrix_4.hpp"
 #include <cmath>
+
+#include "matrix_4.hpp"
 
 namespace Engine
 {

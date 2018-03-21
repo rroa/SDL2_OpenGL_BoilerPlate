@@ -1,14 +1,17 @@
 #pragma once
 
+#ifndef _I_RENDER_HPP
+#define _I_RENDER_HPP
+
 namespace Engine
 {
-	namespace core 
+	namespace core
 	{
 		class i_render
 		{
 		public:
 			i_render();
-			virtual ~i_render()= default;
+			virtual ~i_render() = default;
 			void virtual Render() = 0;
 
 		private:
@@ -24,3 +27,7 @@ namespace Engine
 		}
 	}
 }
+
+#endif // !_I_RENDER_HPP
+
+

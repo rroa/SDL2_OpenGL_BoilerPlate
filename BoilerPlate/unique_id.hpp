@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _UNIQUE_ID_HPP
+#define _UNIQUE_ID_HPP
+
 namespace Engine
 {
 	namespace core
@@ -9,7 +12,7 @@ namespace Engine
 		public:
 			unique_id();
 			unique_id(const unique_id& pOrig);
-			virtual ~unique_id()= default;
+			virtual ~unique_id() = default;
 			unique_id& operator = (const unique_id&);
 
 		private:
@@ -25,3 +28,7 @@ namespace Engine
 		}
 	}
 }
+
+#endif // !_UNIQUE_ID_HPP
+
+

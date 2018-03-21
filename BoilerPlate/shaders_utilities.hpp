@@ -1,20 +1,31 @@
 #pragma once
+
+#ifndef _SHADERS_UTILITIES_HPP
+#define _SHADERS_UTILITIES_HPP
+
 // OpenGL includes
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
-#include "error_manager.hpp"
 
-#include <string>
-#include <vector>
 #include <fstream>
 #include <sstream>
-struct shaders_utilities
-{
-public:
-	shaders_utilities();
-	~shaders_utilities();
-	error_manager errorManager;
+#include <string>
+#include <vector>
 
-	GLuint load_shaders(const char *, const char *);
-};
+#include "error_manager.hpp"
+
+namespace Engine
+{
+	struct shaders_utilities
+	{
+	public:
+		shaders_utilities();
+		~shaders_utilities();
+		error_manager errorManager;
+
+		GLuint load_shaders(const char *, const char *);
+	};
+}
+
+#endif // !_SHADERS_UTILITIES_HPP
 

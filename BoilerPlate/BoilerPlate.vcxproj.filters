@@ -65,23 +65,23 @@
     <ClInclude Include="Vector_4.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
-    <ClInclude Include="vertex.hpp">
-      <Filter>Engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="i_render.h">
-      <Filter>Engine\core</Filter>
-    </ClInclude>
     <ClInclude Include="i_update.hpp">
       <Filter>Engine\core</Filter>
     </ClInclude>
     <ClInclude Include="game_object.hpp">
       <Filter>Engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="unique_id.h">
-      <Filter>Engine\core</Filter>
-    </ClInclude>
     <ClInclude Include="component.hpp">
       <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="i_render.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="unique_id.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="vertex.hpp">
+      <Filter>Engine\Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
