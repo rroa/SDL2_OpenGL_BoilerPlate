@@ -16,7 +16,7 @@
 
 //
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "Engine/utils/stb_image.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -150,7 +150,6 @@ namespace Engine
 			printf("%s\n", &ProgramErrorMessage[0]);
 		}
 
-
 		glDetachShader(ProgramID, VertexShaderID);
 		glDetachShader(ProgramID, FragmentShaderID);
 
@@ -195,26 +194,9 @@ namespace Engine
 		// TODO: RR: Move this out!
 
 		// Create and compile our GLSL program from the shaders
-		ProgramID = LoadShaders("SimpleVertexShader.vertexshader", "SimpleFragmentShader.fragmentshader");
-		Texture1 = LoadTexture("test.png");
-		Texture2 = LoadTexture("face.png");
-
-		// set up vertex data (and buffer(s)) and configure vertex attributes
-		// ------------------------------------------------------------------
-		//float vertices[] = {
-		//	0.5f,  0.5f, 0.0f,  // top right
-		//	0.5f, -0.5f, 0.0f,  // bottom right
-		//	-0.5f, -0.5f, 0.0f,  // bottom left
-		//	-0.5f,  0.5f, 0.0f   // top left 
-		//};
-
-		//float vertices[] = {
-		//	// positions          // colors         
-		//	0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // top right
-		//	0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f, // bottom right
-		//	-0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f, // bottom left
-		//	-0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f, // top left 
-		//};
+		ProgramID = LoadShaders("Engine/shaders/core.vs.glsl", "Engine/shaders/core.fs.glsl");
+		Texture1 = LoadTexture("Game/assets/test.png");
+		Texture2 = LoadTexture("Game/assets/face.png");
 
 		float vertices[] = {
 			// positions          // colors           // texture coords
@@ -223,14 +205,6 @@ namespace Engine
 			-0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
 			-0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
 		};
-
-		//float vertices[] = {
-		//	// positions          // colors           // texture coords
-		//	1.0f,  1.0f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-		//	1.0f, -1.0f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-		//	-1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-		//	-1.0f,  1.0f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
-		//};
 
 		unsigned int indices[] = {  // note that we start from 0!
 			0, 1, 3,  // first Triangle

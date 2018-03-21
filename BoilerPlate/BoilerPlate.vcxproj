@@ -174,22 +174,21 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
-    <ClCompile Include="stb_image.h" />
-    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Engine\utils\stb_image.h" />
+    <ClCompile Include="Engine\utils\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
-    <ClInclude Include="TimeManager.hpp" />
+    <ClInclude Include="Engine\utils\TimeManager.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="rock.fs" />
-    <None Include="SimpleFragmentShader.fragmentshader" />
-    <None Include="SimpleVertexShader.vertexshader" />
-    <None Include="test.fs" />
+    <None Include="Engine\Shaders\core.fs.glsl" />
+    <None Include="Engine\Shaders\core.vs.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="test.png" />
+    <Image Include="Game\assets\face.png" />
+    <Image Include="Game\assets\test.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
