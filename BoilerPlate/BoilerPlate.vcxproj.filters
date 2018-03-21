@@ -31,5 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png" />
+    <Image Include="face.png" />
   </ItemGroup>
 </Project>

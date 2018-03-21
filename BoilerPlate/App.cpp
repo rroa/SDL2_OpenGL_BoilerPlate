@@ -28,12 +28,11 @@ namespace Engine
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 
 	//
-	GLuint VertexArrayObject;  // VAO
-	GLuint VertexBufferObject; // VBO
-	GLuint ElementBufferObject;// EBO
+	GLuint vbo_cube_vertices;
+	GLuint vbo_cube_colors;
+	GLuint ibo_cube_elements;
+	GLint attribute_coord3d, attribute_v_color;
 	GLuint ProgramID;
-	GLuint Texture1;
-	GLuint Texture2;
 
 	GLuint LoadTexture(const char * texture_path)
 	{
@@ -175,8 +174,10 @@ namespace Engine
 	App::~App()
 	{
 		// Cleanup
-		glDeleteBuffers(1, &VertexBufferObject);
-		glDeleteVertexArrays(1, &VertexArrayObject);
+		glDeleteBuffers(1, &vbo_cube_vertices);
+		glDeleteBuffers(1, &vbo_cube_colors);
+		glDeleteBuffers(1, &ibo_cube_elements);
+
 		glDeleteProgram(ProgramID);
 
 		CleanupSDL();
@@ -193,83 +194,70 @@ namespace Engine
 		m_state = GameState::RUNNING;
 
 		// TODO: RR: Move this out!
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_DEPTH_TEST);
 
 		// Create and compile our GLSL program from the shaders
 		ProgramID = LoadShaders("SimpleVertexShader.vertexshader", "SimpleFragmentShader.fragmentshader");
-		Texture1 = LoadTexture("test.png");
-		Texture2 = LoadTexture("face.png");
-
-		// set up vertex data (and buffer(s)) and configure vertex attributes
-		// ------------------------------------------------------------------
-		//float vertices[] = {
-		//	0.5f,  0.5f, 0.0f,  // top right
-		//	0.5f, -0.5f, 0.0f,  // bottom right
-		//	-0.5f, -0.5f, 0.0f,  // bottom left
-		//	-0.5f,  0.5f, 0.0f   // top left 
-		//};
-
-		//float vertices[] = {
-		//	// positions          // colors         
-		//	0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // top right
-		//	0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f, // bottom right
-		//	-0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f, // bottom left
-		//	-0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f, // top left 
-		//};
-
-		float vertices[] = {
-			// positions          // colors           // texture coords
-			0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-			0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-			-0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-			-0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+		
+		GLfloat cube_vertices[] = {
+			// front
+			-1.0, -1.0,  1.0,
+			1.0, -1.0,  1.0,
+			1.0,  1.0,  1.0,
+			-1.0,  1.0,  1.0,
+			// back
+			-1.0, -1.0, -1.0,
+			1.0, -1.0, -1.0,
+			1.0,  1.0, -1.0,
+			-1.0,  1.0, -1.0,
 		};
+		glGenBuffers(1, &vbo_cube_vertices);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_cube_vertices);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cube_vertices), cube_vertices, GL_STATIC_DRAW);
 
-		//float vertices[] = {
-		//	// positions          // colors           // texture coords
-		//	1.0f,  1.0f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-		//	1.0f, -1.0f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-		//	-1.0f, -1.0f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-		//	-1.0f,  1.0f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
-		//};
-
-		unsigned int indices[] = {  // note that we start from 0!
-			0, 1, 3,  // first Triangle
-			1, 2, 3   // second Triangle
+		GLfloat cube_colors[] = {
+			// front colors
+			1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0,
+			0.0, 0.0, 1.0,
+			1.0, 1.0, 1.0,
+			// back colors
+			1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0,
+			0.0, 0.0, 1.0,
+			1.0, 1.0, 1.0,
 		};
+		glGenBuffers(1, &vbo_cube_colors);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_cube_colors);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cube_colors), cube_colors, GL_STATIC_DRAW);
 
-		glGenVertexArrays(1, &VertexArrayObject);
-		glGenBuffers(1, &VertexBufferObject);
-		glGenBuffers(1, &ElementBufferObject);
-
-		glBindVertexArray(VertexArrayObject);
-
-		glBindBuffer(GL_ARRAY_BUFFER, VertexBufferObject);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBufferObject);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-		// vertex position attribute
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
-
-		// color attribute
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(1);
-
-		// texture coord attribute
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-		glEnableVertexAttribArray(2);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		glBindVertexArray(0);
-
+		GLushort cube_elements[] = {
+			// front
+			0, 1, 2,
+			2, 3, 0,
+			// top
+			1, 5, 6,
+			6, 2, 1,
+			// back
+			7, 6, 5,
+			5, 4, 7,
+			// bottom
+			4, 0, 3,
+			3, 7, 4,
+			// left
+			4, 5, 1,
+			1, 0, 4,
+			// right
+			3, 2, 6,
+			6, 7, 3,
+		};
+		glGenBuffers(1, &ibo_cube_elements);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_cube_elements);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cube_elements), cube_elements, GL_STATIC_DRAW);
+		
 		glUseProgram(ProgramID);
-
-		// Remember this needs to be set after the program is activated
-		glUniform1i(glGetUniformLocation(ProgramID, "texture1"), 0);
-		glUniform1i(glGetUniformLocation(ProgramID, "texture2"), 1);
 
 		float resolution[] = { static_cast<float>(m_width), static_cast<float>(m_height) };
 		glUniform2fv(glGetUniformLocation(ProgramID, "resolution"), 1, resolution);
@@ -280,10 +268,20 @@ namespace Engine
 		glm::mat4 view;
 		glm::mat4 projection;
 
-		model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+		glm::vec3 axis_y(0, 0, 1);
+		//TransformedVector = TranslationMatrix * RotationMatrix * ScaleMatrix * OriginalVector;
+		/*model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));*/
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, -4.0));
+		/*model =
+			glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, 0.0)) *
+			glm::rotate(glm::mat4(1.0f), glm::radians(45.f), axis_z)*/;
+		view = glm::lookAt(glm::vec3(0.0, 2.0, 0.0), glm::vec3(0.0, 0.0, -4.0), glm::vec3(0.0, 1.0, 0.0));
+		//view = glm::lookAt(glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, 1.0, 0.0));
 		projection = glm::perspective(glm::radians(45.0f), static_cast<float>(m_width) / static_cast<float>(m_height), 0.1f, 100.0f);
-		
+		//float ar = static_cast<float>(m_width) / static_cast<float>(m_height);
+		//projection = glm::ortho(-ar, ar, -ar, ar,0.1f, 100.f); // In world coordinates
+
 		// retrieve the matrix uniform locations
 		GLuint modelLoc = glGetUniformLocation(ProgramID, "model");
 		GLuint viewLoc = glGetUniformLocation(ProgramID, "view");
@@ -364,6 +362,14 @@ namespace Engine
 		// Update code goes here
 		//
 		glUniform1f(glGetUniformLocation(ProgramID, "time"), static_cast<float>(startTime));
+		
+		float angle = startTime * 45;  // 45° per second
+		glm::vec3 axis_y(0, 1, 0);
+		glm::mat4 anim = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis_y);
+
+		GLuint animLoc = glGetUniformLocation(ProgramID, "anim");
+		glUniformMatrix4fv(animLoc, 1, GL_FALSE, glm::value_ptr(anim));
+
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -384,17 +390,39 @@ namespace Engine
 	void App::Render()
 	{
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		//glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// bind Texture
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, Texture1);
+		glEnableVertexAttribArray(0);
+		// Describe our vertices array to OpenGL (it can't guess its format automatically)
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_cube_vertices);
+		glVertexAttribPointer(
+			0, // attribute
+			3,                 // number of elements per vertex, here (x,y,z)
+			GL_FLOAT,          // the type of each element
+			GL_FALSE,          // take our values as-is
+			0,                 // no extra data between each position
+			0                  // offset of first element
+		);
 
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, Texture2);
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_cube_colors);
+		glVertexAttribPointer(
+			1, // attribute
+			3,                 // number of elements per vertex, here (R,G,B)
+			GL_FLOAT,          // the type of each element
+			GL_FALSE,          // take our values as-is
+			0,                 // no extra data between each position
+			0                  // offset of first element
+		);
 
-		glBindVertexArray(VertexArrayObject);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		/* Push each element in buffer_vertices to the vertex shader */
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_cube_elements);
+		int size;  glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
+		glDrawElements(GL_TRIANGLES, size / sizeof(GLushort), GL_UNSIGNED_SHORT, 0);
+
+		glDisableVertexAttribArray(attribute_coord3d);
+		glDisableVertexAttribArray(attribute_v_color);
 		
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
