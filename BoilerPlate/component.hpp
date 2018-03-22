@@ -20,7 +20,7 @@ namespace Engine
 			~component();
 			explicit component(const std::string& pName);
 			void Update(double pDeltaTime) override;
-			void set_owner(GameObject* pOwner) { mOwner }
+			void set_owner(GameObject* pOwner) { mOwner; };
 
 		protected:
 			GameObject mOwner;
