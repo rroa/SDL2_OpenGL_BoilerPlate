@@ -6,11 +6,19 @@
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="Engine\utils\TimeManager.cpp" />
     <ClCompile Include="Engine\utils\stb_image.h" />
+    <ClCompile Include="Engine\core\Component.cpp" />
+    <ClCompile Include="Engine\core\GameObject.cpp" />
+    <ClCompile Include="Engine\core\UniqueID.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="Engine\utils\TimeManager.hpp" />
+    <ClInclude Include="Engine\core\IUpdate.hpp" />
+    <ClInclude Include="Engine\core\IRender.hpp" />
+    <ClInclude Include="Engine\core\UniqueID.hpp" />
+    <ClInclude Include="Engine\core\GameObject.hpp" />
+    <ClInclude Include="Engine\core\Component.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

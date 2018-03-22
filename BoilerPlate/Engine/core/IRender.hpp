@@ -10,9 +10,9 @@ namespace Engine
 		{
 		public:
 			virtual ~IRender() = default;
-			/*
-			 * PUBLIC FUNCTIONS
-			 */
+			/* =============================================================
+			* PUBLIC FUNCTIONS
+			* ============================================================= */
 			void virtual Render() = 0;
 		};
 	}

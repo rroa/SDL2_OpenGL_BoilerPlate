@@ -9,21 +9,21 @@ namespace Engine
 		class IUpdate
 		{
 		public:
-			/*
-			* CTOR // DTOR
-			*/
-			IUpdate() : m_nUpdates(0) {};
+			/* =============================================================
+			* CTOR
+			* ============================================================= */
+			IUpdate() : m_nUpdates(0) {}
 			virtual ~IUpdate() = default;
 
-			/*
-			 * PUBLIC FUNCTIONS
-			 */
+			/* =============================================================
+			* PUBLIC FUNCTIONS
+			* ============================================================= */
 			void virtual Update(double deltaTime) { m_nUpdates++; };
 		protected:
-			/*
+			/* =============================================================
 			* MEMBERS
-			*/
-			int m_nUpdates;
+			* ============================================================= */
+			int	m_nUpdates;
 		};
 	}
 }

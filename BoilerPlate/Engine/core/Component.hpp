@@ -15,21 +15,26 @@ namespace Engine
 		class Component : IUpdate
 		{
 		public:
-			/*
-			 * PUBLIC FUNCTIONS
-			 */
+			/* =============================================================
+			* PUBLIC FUNCTIONS
+			* ============================================================= */
 			explicit Component(const std::string& name);
 			~Component();
 			void Update(double deltaTime) override;
 
+			/* =============================================================
+			* GETTER FUNCTIONS
+			* ============================================================= */
 			void SetOwner(GameObject* owner) { m_owner = owner; }
 			GameObject* GetOwner() const { return m_owner; }
 			std::string GetName() const { return m_name; }
 		protected:
-			GameObject* m_owner;
-			std::string m_name;
+			/* =============================================================
+			* MEMBERS
+			* ============================================================= */
+			GameObject*	m_owner;
+			std::string	m_name;
 		};
 	}
 }
-
 #endif // !_COMPONENT_HPP_
