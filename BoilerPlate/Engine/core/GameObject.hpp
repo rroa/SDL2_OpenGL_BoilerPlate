@@ -14,7 +14,6 @@ namespace Engine
 	namespace Core
 	{
 		class Component;
-		class Scene;
 		class GameObject : public IUpdate, public IRender, public UniqueID
 		{
 		public:
@@ -65,7 +64,6 @@ namespace Engine
 			* MEMBERS
 			* ============================================================= */
 			std::vector<Component*>	m_components;
-			Scene* m_scene;
 			std::vector<GameObject*> m_children;
 			GameObject* m_parent;
 		};

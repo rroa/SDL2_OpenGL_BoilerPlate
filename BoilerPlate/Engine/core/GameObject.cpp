@@ -11,8 +11,7 @@ namespace Engine
 	namespace Core
 	{
 		GameObject::GameObject()
-			: m_scene(nullptr)
-			, m_parent(nullptr)
+			: m_parent(nullptr)
 		{}
 
 		GameObject::~GameObject()
