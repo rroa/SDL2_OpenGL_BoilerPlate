@@ -10,22 +10,18 @@ namespace Engine
 		class unique_id
 		{
 		public:
+			//constructors
 			unique_id();
 			unique_id(const unique_id& pOrig);
-			virtual ~unique_id() = default;
-			unique_id& operator = (const unique_id&);
 
-		private:
+			//operator
+			unique_id& operator=(const unique_id& pOrig);
 
+			//members
+			int mId;
+		protected:
+			static int mNextID;
 		};
-
-		unique_id::unique_id()
-		{
-		}
-
-		unique_id::~unique_id()
-		{
-		}
 	}
 }
 

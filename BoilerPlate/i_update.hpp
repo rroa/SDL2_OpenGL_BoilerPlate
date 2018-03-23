@@ -10,12 +10,15 @@ namespace Engine
 		class i_update
 		{
 		public:
-			i_update();
+			//constructor
+			i_update() : mNupdates(0) {}
 			virtual ~i_update() = default;
-			void virtual update(double pDeltaTime) { mNUpdates++; };
 
+			//public function
+			void virtual update(double pDeltaTime) { mNupdates++; };
 		protected:
-			int mNUpdates;
+			//memeber
+			int	mNupdates;
 		};
 	}
 }

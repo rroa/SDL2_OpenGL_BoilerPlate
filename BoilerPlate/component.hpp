@@ -11,28 +11,24 @@ namespace Engine
 {
 	namespace core
 	{
-		class GameObject;
+		class game_object;
 		class component : i_update
 		{
 		public:
-
-			component();
+			//public functions
+			explicit component(const std::string& name);
 			~component();
-			explicit component(const std::string& pName);
-			void Update(double pDeltaTime) override;
-			void set_owner(GameObject* pOwner) { mOwner; };
-
+			void update(double pDeltaTime) override;
+			
+			//getter functions
+			void set_owner(game_object* pOwner) { mOwner = pOwner; }
+			game_object* get_owner() const { return mOwner; }
+			std::string get_name() const { return mName; }
 		protected:
-			GameObject mOwner;
+			//members
+			game_object* mOwner;
+			std::string	mName;
 		};
-
-		component::component()
-		{
-		}
-
-		component::~component()
-		{
-		}
 	}
 }
 
