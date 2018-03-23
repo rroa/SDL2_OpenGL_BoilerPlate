@@ -7,6 +7,7 @@
 
 #include "Vector_3.hpp"
 #include "Vector_4.hpp"
+#include "Math_Utilities.hpp"
 
 namespace Engine {
 
@@ -35,9 +36,14 @@ namespace Engine {
 		matrix_4 rotate_x(float);
 		matrix_4 rotate_y(float);
 		matrix_4 rotate_z(float);
+		matrix_4 generate_ortho(float, float, float, float, float, float);
+		matrix_4 generate_perspective(float, float, float);
+		matrix_4 look_at(Vector_3, Vector_3);
+
+		//Global variables
+		Math_Utilities mathTools;
 
 		//Operators to overload
-		//float& operator [] (const int);
 		friend std::ostream& operator<<(std::ostream&, const matrix_4&);
 		matrix_4& operator = (const matrix_4&);
 		matrix_4 operator + (const matrix_4&) const;

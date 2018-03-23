@@ -151,6 +151,65 @@ namespace Engine
 		return newMatrix;
 	}
 
+	matrix_4 matrix_4::generate_ortho(float pXmax, float pXmin, float pYmax, float pYmin, float pZmax, float pZmin)
+	{
+		matrix_4 orthoMatrix = matrix_4();
+
+		orthoMatrix.mMatrix[0] = 2.0f/(pXmax-pXmin);
+		orthoMatrix.mMatrix[5] = 2.0f/(pYmax-pYmin);
+		orthoMatrix.mMatrix[10] = -2.0f/(pZmax-pZmin);
+		orthoMatrix.mMatrix[12] = -(pXmax + pXmin) / (pXmax - pXmin);
+		orthoMatrix.mMatrix[13] = -(pYmax + pYmin) / (pYmax - pYmin);
+		orthoMatrix.mMatrix[14] = -(pZmax + pZmin) / (pZmax - pZmin);
+
+		return orthoMatrix;
+	}
+
+	matrix_4 matrix_4::generate_perspective(float pSceneSize, float pZmax, float pZmin)
+	{
+		matrix_4 perspectiveMatrix = matrix_4();
+
+		float  factor = 1 / (tan(pSceneSize * 0.5 *mathTools.to_radians(1)));
+		float deltaZFactor = 1 / (pZmax - pZmin);
+		perspectiveMatrix.mMatrix[0] = factor;
+		perspectiveMatrix.mMatrix[5] = factor;
+		perspectiveMatrix.mMatrix[10] = -pZmax * deltaZFactor;
+		perspectiveMatrix.mMatrix[11] = -1;
+		perspectiveMatrix.mMatrix[14] = -pZmax * pZmin * deltaZFactor;
+		perspectiveMatrix.mMatrix[15] = 0;
+
+		return perspectiveMatrix;
+	}
+
+	matrix_4 matrix_4::look_at(Vector_3 pActualPosition, Vector_3 pNewLookingPosition)
+	{
+		matrix_4 lookingAtMatrix = matrix_4();
+		Vector_3 forward, up, right, arbitraryVector;
+
+		forward = pActualPosition - pNewLookingPosition;
+		forward.normalize();
+		arbitraryVector = Vector_3(0.0, 1.0, 0.0);
+		right = arbitraryVector.cross_product(forward);
+		right.normalize();
+		up = forward.cross_product(right);
+
+		lookingAtMatrix.mMatrix[0] = right.mX;
+		lookingAtMatrix.mMatrix[4] = right.mY;
+		lookingAtMatrix.mMatrix[8] = right.mZ;
+		lookingAtMatrix.mMatrix[1] = up.mX;
+		lookingAtMatrix.mMatrix[5] = up.mY;
+		lookingAtMatrix.mMatrix[9] = up.mZ;
+		lookingAtMatrix.mMatrix[2] = forward.mX;
+		lookingAtMatrix.mMatrix[6] = forward.mY;
+		lookingAtMatrix.mMatrix[10] = forward.mZ;
+
+		lookingAtMatrix.mMatrix[3] =  pActualPosition.mX;
+		lookingAtMatrix.mMatrix[7] =  pActualPosition.mY;
+		lookingAtMatrix.mMatrix[11] = pActualPosition.mZ;
+
+		return lookingAtMatrix;
+	}
+
 	//Returns the matrix
 	float* Engine::matrix_4::get_matrix()
 	{
@@ -317,14 +376,6 @@ namespace Engine
 
 		return transposedMatrix;
 	}
-
-	//To manage a single index
-	/*float& matrix_4::operator[][](const int pIndex)
-	{
-		int rowIndex = pIndex % 4;
-		int columnIndex = pIndex / 4;
-		return mMatrix.mArray[rowIndex][columnIndex];
-	}*/
 
 	//To print the matrix
 	std::ostream & operator<<(std::ostream &pOs, const matrix_4 &pMatrix)

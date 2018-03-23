@@ -45,7 +45,7 @@ namespace Engine
 			FragmentShaderStream.close();
 		}
 		else {
-			errorManager.show_errors(pFragmentFilePath, "39", "Impossible to open. Are you in the right directory? Don't forget to read the FAQ!\n", " ");
+			//errorManager.show_errors(pFragmentFilePath, "39", "Impossible to open. Are you in the right directory? Don't forget to read the FAQ!\n", " ");
 			getchar();
 			return 0;
 		}
@@ -65,7 +65,7 @@ namespace Engine
 		if (InfoLogLength > 0) {
 			std::vector<char> VertexShaderErrorMessage(InfoLogLength + 1);
 			glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
-			errorManager.show_errors(pVertexFilePath, "57", &VertexShaderErrorMessage[0], " ");
+			//errorManager.show_errors(pVertexFilePath, "57", &VertexShaderErrorMessage[0], " ");
 		}
 
 
@@ -82,7 +82,7 @@ namespace Engine
 		if (InfoLogLength > 0) {
 			std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
 			glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
-			errorManager.show_errors(pFragmentFilePath, "74", &FragmentShaderErrorMessage[0], " ");
+			//errorManager.show_errors(pFragmentFilePath, "74", &FragmentShaderErrorMessage[0], " ");
 		}
 
 		// Link the program
@@ -98,7 +98,7 @@ namespace Engine
 		if (InfoLogLength > 0) {
 			std::vector<char> ProgramErrorMessage(InfoLogLength + 1);
 			glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
-			errorManager.show_errors(pVertexFilePath, "90", &ProgramErrorMessage[0], " ");
+			//errorManager.show_errors(pVertexFilePath, "90", &ProgramErrorMessage[0], " ");
 		}
 
 

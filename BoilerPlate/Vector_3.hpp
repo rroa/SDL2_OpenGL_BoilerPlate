@@ -18,6 +18,7 @@ namespace Engine
 		//Functions
 		double module();
 		double squared_lenght();
+		Vector_3 cross_product(Vector_3 pToCross);
 		void normalize();
 
 		//Operators to overload

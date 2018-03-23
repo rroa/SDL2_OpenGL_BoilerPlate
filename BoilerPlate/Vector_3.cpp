@@ -46,6 +46,17 @@ namespace Engine
 		return ((mX*mX) + (mY*mY) + (mZ*mZ));
 	}
 
+	Vector_3 Vector_3::cross_product(Vector_3 pToCross)
+	{
+		Vector_3 newVector = Vector_3();
+
+		newVector.mX = mY * (pToCross.mZ - mZ) * pToCross.mY;
+		newVector.mY = mZ * (pToCross.mX - mX) * pToCross.mZ;
+		newVector.mZ = mX * (pToCross.mY - mY) * pToCross.mX;
+
+		return newVector;
+	}
+
 	void Vector_3::normalize()
 	{
 		mModule = module();
