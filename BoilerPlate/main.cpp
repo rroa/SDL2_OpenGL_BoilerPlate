@@ -6,23 +6,17 @@
 // C++ STL
 #include <cassert>
 #include <iostream>
+#include <stdlib.h>
 
 // 
 #include "App.hpp"
+#include "matrix_4.hpp"
 
 const int WIDTH = 1136;
 const int HEIGHT = 640;
 
 int main(int argc, char* argv[])
 {
-#if _MSC_VER && _DEBUG
-	// https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx
-	// This will help you detect leaks when using Visual C++
-	// Uncomment this line to start getting reports!
-	assert(_CrtCheckMemory());
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-#endif
-
 	// Create Game Object
 	//
 	Engine::App* app = new Engine::App("Boiler Plate!", WIDTH, HEIGHT);
