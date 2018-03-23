@@ -5,7 +5,7 @@
 
 struct vertex
 {
-	float mCoordinates[3];
+	float mCoordinates[5];
 };
 
 #endif // !_VERTEX_HPP

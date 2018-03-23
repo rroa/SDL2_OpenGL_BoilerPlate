@@ -20,6 +20,11 @@ namespace Engine
 	{
 	}
 
+	GLuint texture::get_texture()
+	{
+		return mTexture;
+	}
+
 	GLuint texture::load_texture(const char *pTexturePath)
 	{
 		unsigned int texture;

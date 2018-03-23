@@ -41,6 +41,11 @@
     <ClCompile Include="unique_id.cpp">
       <Filter>Engine\core</Filter>
     </ClCompile>
+    <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="resource_manager.cpp" />
+    <ClCompile Include="game.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -92,6 +97,11 @@
     <ClInclude Include="vertex.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="sprite.hpp" />
+    <ClInclude Include="resource_manager.hpp" />
+    <ClInclude Include="game.hpp">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -105,6 +115,9 @@
     </Filter>
     <Filter Include="Engine\core">
       <UniqueIdentifier>{1c41bd96-7291-4a07-8e68-8140ae2eb9a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{29a552fa-ace6-41bc-acd2-16b90153ea4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

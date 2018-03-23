@@ -5,6 +5,7 @@
 
 #include "shaders_utilities.hpp"
 #include "texture.hpp"
+#include <vector>
 
 namespace Engine
 {
@@ -16,21 +17,26 @@ namespace Engine
 		renderer();
 		~renderer();
 		void vertex_loader();
-		void textures_loader(const char* pTextureFiles[]);
-		void get_program_id();
+		//void textures_loader(const char* pTextureFiles[]);
+		void init_render();
 		void render();
 		void toggle_fill_or_line();
+		void objects_generator();
+		void objects_activator();
+		void objects_atrributes_manager();
 
+		//Global variables
 		bool fillOrLineDrawing;
+
+		//Public attributes
+		shaders_utilities mShaderManager;
+		texture mTexture;
 
 	private:
 		GLuint mVertexArrayObject; //VAO
 		GLuint mVertexBufferObject; //VBO
 		GLuint mElementsBufferObject; //EBO
 		GLuint mProgramID;
-		shaders_utilities mShaderManager;
-		texture mTextures[MAXIMUM_TEXTURES];
-
 	};
 }
 

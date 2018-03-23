@@ -16,8 +16,11 @@ namespace Engine
 		texture(const char *);
 		~texture();
 
+		GLuint get_texture();
+
 		GLuint load_texture(const char *);
 	private:
+
 		GLuint mTexture;
 	};
 }
