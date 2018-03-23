@@ -16,7 +16,7 @@ namespace Engine
 	public:
 		renderer();
 		~renderer();
-		void vertex_loader();
+		void vertex_loader(int, int);
 		//void textures_loader(const char* pTextureFiles[]);
 		void init_render();
 		void render();

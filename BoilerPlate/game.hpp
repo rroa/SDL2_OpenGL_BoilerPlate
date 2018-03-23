@@ -9,7 +9,7 @@ namespace game
 
 		game();
 		~game();
-		void execute();
+		void execute(int, int);
 		void render();
 		void toggle_drawing_mode();
 

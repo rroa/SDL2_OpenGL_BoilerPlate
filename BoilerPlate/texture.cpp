@@ -37,6 +37,7 @@ namespace Engine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		int width, height, nrChannels;
+		stbi_set_flip_vertically_on_load(true);
 
 		// Load the texture
 		unsigned char *data = stbi_load(pTexturePath, &width, &height, &nrChannels, 0);

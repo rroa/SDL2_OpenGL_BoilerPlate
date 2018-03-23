@@ -11,10 +11,10 @@ namespace game {
 	}
 
 
-	void game::execute()
+	void game::execute(int pFrameHeight, int pFrameWidth)
 	{
 		mRenderManager.init_render();
-		mRenderManager.vertex_loader();
+		mRenderManager.vertex_loader(pFrameHeight, pFrameWidth);
 	}
 
 	void game::render()

@@ -30,7 +30,7 @@ namespace Engine
 		glDeleteVertexArrays(1, &mVertexArrayObject);
 	}
 
-	void renderer::vertex_loader()
+	void renderer::vertex_loader(int pFrameHeight, int pFrameWidth)
 	{
 		objects_generator();
 
@@ -49,6 +49,10 @@ namespace Engine
 		glBindVertexArray(0);
 
 		glUniform1i(glGetUniformLocation(mProgramID, "texture1"), 0);
+
+		float resolution[] = { static_cast<float>(pFrameWidth), static_cast<float>(pFrameHeight) };
+		glUniform2fv(glGetUniformLocation(mProgramID, "resolution"), 1, resolution);
+
 	}
 
 
@@ -64,7 +68,7 @@ namespace Engine
 	void renderer::init_render()
 	{
 		mProgramID = mShaderManager.load_shaders("vertex.glsl", "frag.glsl");
-		mTexture = texture("assets/block_solid.png");
+		mTexture = texture("test.png");
 	}
 
 	void renderer::render()
